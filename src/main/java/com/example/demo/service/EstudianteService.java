@@ -9,46 +9,39 @@ import com.example.demo.repository.IEstudianteRepository;
 import com.example.demo.repository.modelo.Estudiante;
 
 @Service
-public class EstudianteService implements IEstudianteService {
+public class EstudianteService implements IEstudianteService{
+    @Autowired
+    private IEstudianteRepository iEstudianteRepository;
+    @Override
+    public void guardar(Estudiante estudiante) {
+        // TODO Auto-generated method stub
+        this.iEstudianteRepository.insertar(estudiante);
+    }
+    @Override
+    public void actualizar(Estudiante estudiante) {
+        // TODO Auto-generated method stub
+        this.iEstudianteRepository.actualizar(estudiante);
+    }
+    @Override
+    public void actualizarParcial(String apellido, String nombre, Integer Id) {
+        // TODO Auto-generated method stub
+        this.iEstudianteRepository.actualizarParcial(apellido, nombre, Id);
+    }
+    @Override
+    public Estudiante buscar(Integer id) {
+        // TODO Auto-generated method stub
+        return this.iEstudianteRepository.seleccionar(id);
+    }
+    @Override
+    public void borrar(Integer id) {
+        // TODO Auto-generated method stub
+        this.iEstudianteRepository.eliminar(id);
+    }
 
-	@Autowired
-	private IEstudianteRepository ep;
-
-	@Override
-	public void guardar(Estudiante estudiante) {
-		this.ep.insertar(estudiante);
-	}
-
-	@Override
-	public void actualizar(Estudiante estudiante) {
-		// TODO Auto-generated method stub
-		this.ep.actualizar(estudiante);
-
-	}
-
-	@Override
-	public void actulizarParcial(String apellido, String nombre, Integer id) {
-		// TODO Auto-generated method stub
-		this.ep.actulizarParcial(apellido, nombre, id);
-
-	}
-
-	@Override
-	public Estudiante buscar(Integer id) {
-		// TODO Auto-generated method stub
-		return this.ep.seleccionar(id);
-	}
-
-	@Override
-	public void borrar(Integer id) {
-		// TODO Auto-generated method stub
-		this.ep.eliminar(id);
-	}
-
-	@Override
-	public List<Estudiante> buscarTodos(String genero) {
-		// TODO Auto-generated method stub
-		return this.ep.seleccionarTodos(genero);
-	}
+    @Override
+    public List<Estudiante> buscarTodos(String genero) {
+        // TODO Auto-generated method stub
+        return this.iEstudianteRepository.buscarTodos(genero);
+    }
 
 }
