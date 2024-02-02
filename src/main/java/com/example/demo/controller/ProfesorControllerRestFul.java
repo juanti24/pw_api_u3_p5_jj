@@ -25,7 +25,7 @@ public class ProfesorControllerRestFul {
 		private IProfesorService iProfesorService;
 	
 	
-	 	@GetMapping(path="/consultar/{id}")  
+	 	@GetMapping(path="/{id}")  
 	    public Profesor buscar(@PathVariable Integer id){
 	        return iProfesorService.buscar(id);
 	    }
