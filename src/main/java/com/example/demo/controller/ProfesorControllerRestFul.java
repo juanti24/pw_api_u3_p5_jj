@@ -31,27 +31,28 @@ public class ProfesorControllerRestFul {
 	    }
 
 	   // http://localhost:8080/API/v1.0/Matricula/estudiantes/buscar
-	    @PostMapping(path="/guardar")
+	    @PostMapping
 	    public void guardar(@RequestBody Profesor profesor){
 	        this.iProfesorService.guardar(profesor);
 	    }
-	    @PutMapping(path="/actualizar")
-	    public void actualizar(@RequestBody Profesor profesor){
+	    @PutMapping(path="/{id}")  
+	    public void actualizar(@RequestBody Profesor profesor, @PathVariable Integer id){
+	    	profesor.setId(id);
 	        this.iProfesorService.actualizar(profesor);
 	    }
-	    @PatchMapping(path = "/actualizarParcial")
-	    public void actualizarParcial (@RequestBody Profesor profesor){
+	    @PatchMapping(path = "/{id}")
+	    public void actualizarParcial (@RequestBody Profesor profesor, @PathVariable Integer id){
 	        this.iProfesorService.actualizarParcial(profesor.getApellido(), profesor.getNombre(), profesor.getId());
 	    }
-	    @DeleteMapping(path = "/borrar/{id}")
+	    @DeleteMapping(path = "{id}")
 	    public void borrar(@PathVariable Integer id){
 	        this.iProfesorService.borrar(id);
 	    }
 
 	    //filtrar un conjunto/lista los datos
-	    @GetMapping(path = "/consultarTodos")
+	    @GetMapping
 	    // http://localhost:8080/API/v1.0/Matricula/estudiantes/consultarTodos?genero=f&edad=15
-	    public List<Profesor> consultarTodos(@RequestParam String genero){
+	    public List<Profesor> consultarTodos(@RequestParam (required = false, defaultValue = "M") String genero){
 	   
 	        return this.iProfesorService.buscarTodos(genero);
 	    }
