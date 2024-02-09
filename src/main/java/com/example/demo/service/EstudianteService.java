@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.IEstudianteRepository;
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.service.to.EstudianteTO;
 
 @Service
 public class EstudianteService implements IEstudianteService{
@@ -43,5 +45,27 @@ public class EstudianteService implements IEstudianteService{
         // TODO Auto-generated method stub
         return this.iEstudianteRepository.buscarTodos(genero);
     }
+	@Override
+	public List<EstudianteTO> buscarTodosTO() {
+		// TODO Auto-generated method stub
+		List<Estudiante> lista = this.iEstudianteRepository.buscarTodos("M");
+		List<EstudianteTO> listaFinal = new ArrayList<>();
+		for(Estudiante est:lista) {
+			listaFinal.add(this.convertir(est));
+		}
+		
+		return listaFinal;
+	}
+	
+	
+	private EstudianteTO convertir(Estudiante est) {
+		EstudianteTO estuTo = new EstudianteTO();
+		estuTo.setApellido(est.getApellido());
+		estuTo.setGenero(est.getGenero());
+		estuTo.setFechaNacimiento(est.getFechaNacimiento());
+		estuTo.setId(est.getId());
+		estuTo.setNombre(est.getNombre());
+		return estuTo;
+	}
 
 }
