@@ -57,10 +57,17 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository {
 	}
 
 	@Override
-	public List<Estudiante> seleccionarTodos(String genero) {
+	public List<Estudiante> seleccionarTodosGenero(String genero) {
 		// TODO Auto-generated method stub
 		Query query = this.entityManager.createQuery("SELECT e FROM Estudiante e  WHERE e.genero= : variable");
 		query.setParameter("variable", genero);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Estudiante> seleccionarTodos() {
+		// TODO Auto-generated method stub
+		Query query = this.entityManager.createQuery("SELECT e FROM Estudiante e");
 		return query.getResultList();
 	}
 

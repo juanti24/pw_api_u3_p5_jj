@@ -12,21 +12,25 @@ import com.example.demo.service.to.EstudianteLigeroTO;
 import com.example.demo.service.to.EstudianteTO;
 
 @Service
-public class IEstudianteServiceImpl implements IEstudianteService {
+public class EstudianteServiceImpl implements IEstudianteService {
 
 	@Autowired
 	private IEstudianteRepository estudianteRepository;
+	
+	
 
 	@Override
-	public void guardar(Estudiante estudiante) {
+	public void guardar(EstudianteTO estudianteTO) {
 		// TODO Auto-generated method stub
-		this.estudianteRepository.insertar(estudiante);
+		
+		
+		this.estudianteRepository.insertar(this.convertirAEstudiante(estudianteTO));
 	}
 
 	@Override
-	public void actualizar(Estudiante estudiante) {
+	public void actualizar(EstudianteTO estudianteTO) {
 		// TODO Auto-generated method stub
-		this.estudianteRepository.actualizar(estudiante);
+		this.estudianteRepository.actualizar(this.convertirAEstudiante(estudianteTO));
 	}
 
 	@Override
@@ -48,15 +52,15 @@ public class IEstudianteServiceImpl implements IEstudianteService {
 	}
 
 	@Override
-	public List<Estudiante> buscarTodos(String genero) {
+	public List<Estudiante> buscarTodosGenero(String genero) {
 		// TODO Auto-generated method stub
-		return this.estudianteRepository.seleccionarTodos(genero);
+		return this.estudianteRepository.seleccionarTodosGenero(genero);
 	}
 
 	@Override
 	public List<EstudianteTO> buscarTodosTO() {
 		// TODO Auto-generated method stub
-		List<Estudiante> list = this.estudianteRepository.seleccionarTodos("M");
+		List<Estudiante> list = this.estudianteRepository.seleccionarTodos();
 
 		List<EstudianteTO> listaFinal = new ArrayList<>();
 
@@ -64,6 +68,25 @@ public class IEstudianteServiceImpl implements IEstudianteService {
 			listaFinal.add(this.convertir(est));
 		}
 		return listaFinal;
+	}
+	
+	
+	private Estudiante convertirAEstudiante(EstudianteTO estuTO) {
+
+		Estudiante estu = new Estudiante();
+		estu.setAepllido(estuTO.getApellido());
+		estu.setFechaNacimiento(estuTO.getFechaNacimiento());
+		estu.setGenero(estuTO.getGenero());
+		estu.setId(estuTO.getId());
+		estu.setNombre(estuTO.getNombre());
+
+		estu.setCedula(estuTO.getCedula());
+		estu.setRangoEconomico(estuTO.getRangoEconomico());
+		estu.setFacultad(estuTO.getFacultad());
+		estu.setCarrera(estuTO.getCarrera());
+		estu.setGratuidad(estuTO.getGratuidad());
+
+		return estu;
 	}
 
 	private EstudianteTO convertir(Estudiante estu) {

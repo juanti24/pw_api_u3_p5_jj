@@ -11,17 +11,17 @@ public interface IEstudianteService {
 	
 
 	//CREATE
-	public void guardar (Estudiante estudiante);
+	public void guardar (EstudianteTO estudianteTO);
 	
 	//UPDATE
-	public void actualizar (Estudiante estudiante);
+	public void actualizar (EstudianteTO estudianteTO);
 	
 	public void actualizarParcial (String apellido, String nombre, Integer id);
 	
 	//READ
 	public Estudiante buscar (Integer id);
 	
-	public List<Estudiante> buscarTodos (String genero);
+	public List<Estudiante> buscarTodosGenero (String genero);
 	
 	public List<EstudianteTO> buscarTodosTO ();
 	

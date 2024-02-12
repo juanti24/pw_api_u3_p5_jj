@@ -19,7 +19,9 @@ public interface IEstudianteRepository {
 	//READ
 	public Estudiante seleccionar (Integer id);
 	
-	public List<Estudiante> seleccionarTodos (String genero);
+	public List<Estudiante> seleccionarTodosGenero (String genero);
+	
+	public List<Estudiante> seleccionarTodos();
 	
 	public void eliminar (Integer id);
 	
