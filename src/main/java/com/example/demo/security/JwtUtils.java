@@ -14,7 +14,7 @@ public class JwtUtils {
 	public boolean validateJwtToken(String auhToken) {
 		
 		try {
-		Jwts.parser().setSigningKey("zxcv123asdasdasd55d45as4d5asd5a4sd4asd5d4sa5d4a4d5asadasdasdasdasdasdasdasdasdasdasdasdasdasdasdafewfasdasdasdaasdewfe").parseClaimsJws(auhToken);
+		Jwts.parser().setSigningKey("jwtSemillauyuyugfesybsueyfb561drg65d1rg51drg651drg516516516516516516515661fgh651fghsyuebfysue").parseClaimsJws(auhToken);
 		
 		return true;
 		
@@ -26,7 +26,7 @@ public class JwtUtils {
 	
 	public String getuseNameFromjwtToken (String token) {
 		
-		return Jwts.parser().setSigningKey("zxcv123asdasdasd55d45as4d5asd5a4sd4asd5d4sa5d4a4d5asadasdasdasdasdasdasdasdasdasdasdasdasdasdasdafewfasdasdasdaasdewfe").parseClaimsJws(token).getBody().getSubject();
+		return Jwts.parser().setSigningKey("jwtSemillauyuyugfesybsueyfb561drg65d1rg51drg651drg516516516516516516515661fgh651fghsyuebfysue").parseClaimsJws(token).getBody().getSubject();
 		
 	
 	}
