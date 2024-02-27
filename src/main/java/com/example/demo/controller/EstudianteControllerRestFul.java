@@ -42,43 +42,6 @@ public class EstudianteControllerRestFul {
 
 	@Autowired
 	private IMateriaService materiaService;
-/*
-	// GET
-	@GetMapping(path = "/temp/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Estudiante> buscar(@PathVariable Integer id) {
-		// 2xx - grupo satyisfactorio
-		// 240: Recurso Estudiante encontrado satisfactoriamente
-
-		Estudiante estu = this.estudianteService.buscar(id);
-
-		return ResponseEntity.status(240).body(estu);
-
-	}
-
-	@PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void actualizarParcial(@RequestBody Estudiante estudiante, @PathVariable Integer id) {
-
-		this.estudianteService.actualizarParcial(estudiante.getAepllido(), estudiante.getNombre(), id);
-	}
-
-	// http://localhost:8080/API/v1.0/Matricula/estudiantes/buscarTodos?genero=M
-	// http://localhost:8080/API/v1.0/Matricula/estudiantes/buscarTodos?genero=M&edad=100
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, path = "/temp")
-	public ResponseEntity<List<Estudiante>> buscarTodosGenero(
-			@RequestParam(required = false, defaultValue = "M") String genero) {
-
-		List<Estudiante> listEstu = this.estudianteService.buscarTodosGenero(genero);
-
-		HttpHeaders cabecera = new HttpHeaders();
-
-		cabecera.add("mensaje_242", "Lista consultada con filtros de manera satisfactoria");
-		cabecera.add("mensaje_info", "El sistema corroboró la busqueda");
-		// new ResponseEntity<>(body, cabecera, cod http)
-		return new ResponseEntity<>(listEstu, cabecera, HttpStatus.OK);
-
-	}
-*/
-	// ----------------------------------------------------------------------------------------------------
 
 	// CRUD
 
